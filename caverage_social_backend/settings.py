@@ -31,7 +31,7 @@ try:
 except KeyError:
     DEBUG = True
 
-ALLOWED_HOSTS: List[Optional[str]] = [os.environ["ALLOWED_HOST"]]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -45,7 +45,11 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "django_keycloak.apps.KeycloakAppConfig",
+    "caverage_social_backend.users",
 ]
+
+if DEBUG:
+    INSTALLED_APPS = INSTALLED_APPS + ["dynamic_fixtures"]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
