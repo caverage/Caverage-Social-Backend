@@ -94,6 +94,7 @@ DATABASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
     "django_keycloak.auth.backends.KeycloakAuthorizationCodeBackend",
 ]
 
