@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django_keycloak.apps.KeycloakAppConfig",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_keycloak.middleware.BaseKeycloakMiddleware",
 ]
 
 ROOT_URLCONF = "caverage_social_backend.urls"
@@ -91,6 +93,11 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    "django_keycloak.auth.backends.KeycloakAuthorizationCodeBackend",
+]
+
+LOGIN_URL = "https://auth.cavera.ge"
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
